@@ -2,6 +2,6 @@
 
 This is a simple random password generator project.
 
-- User selects password length between 8-128 characters via prompt box.
-- Character type selection choices are lowercase, uppercase, number, and special characters. These selections are made through confirm boxes.
+- User selects password length between 8-128 characters.
+- Character type selection choices are lowercase, uppercase, number, and special characters.
 - This password can be copied and pasted.
