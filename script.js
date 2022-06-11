@@ -6,14 +6,14 @@ function generatePassword() {
 	const uCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 	const numeric = '0123456789';
 	const special = '!#$%&()*+,-./:;<=>?@^_`{|}~';
-	const pWord = [];
+	const raw = [];
 	const err = 'User input error';
 	const length = document.getElementById('length').value;
 	const lc = document.getElementById('lower').checked;
 	const uc = document.getElementById('upper').checked;
 	const num = document.getElementById('number').checked;
 	const spec = document.getElementById('special').checked;
-	const charCount = lc + uc + num + spec;
+	const type = lc + uc + num + spec;
 
 	if (length < 8 || length > 128) {
 		alert(
@@ -22,33 +22,32 @@ function generatePassword() {
 		throw err;
 	}
 
-	if (charCount === 0) {
+	if (type === 0) {
 		alert('At least 1 character type must be selected - please try again');
 		throw err;
 	}
 
 	for (let i = 0; i < length; ) {
 		if (lc) {
-			pWord[i] = lCase[Math.floor(Math.random() * lCase.length)];
+			raw[i] = lCase[Math.floor(Math.random() * lCase.length)];
 			i++;
 		}
 		if (uc) {
-			pWord[i] = uCase[Math.floor(Math.random() * uCase.length)];
+			raw[i] = uCase[Math.floor(Math.random() * uCase.length)];
 			i++;
 		}
 		if (num) {
-			pWord[i] = numeric[Math.floor(Math.random() * numeric.length)];
+			raw[i] = numeric[Math.floor(Math.random() * numeric.length)];
 			i++;
 		}
 		if (spec) {
-			pWord[i] = special[Math.floor(Math.random() * special.length)];
+			raw[i] = special[Math.floor(Math.random() * special.length)];
 			i++;
 		}
 	}
+
 	function writePassword() {
-		const password = pWord
-			.join('')
-			.split('')
+		const password = raw
 			.sort(function () {
 				return 0.5 - Math.random();
 			})
