@@ -1,4 +1,3 @@
-// // Assignment Code
 const generateBtn = document.getElementById('generate');
 const newPass = document.getElementById('password');
 
@@ -10,27 +9,23 @@ function generatePassword() {
 	const pWord = [];
 	const err = 'User input error';
 	const length = document.getElementById('length').value;
-	// const length = prompt('Select password length between 8-128 characters');
+	const lc = document.getElementById('lower').checked;
+
+	const uc = document.getElementById('upper').checked;
+
+	const num = document.getElementById('number').checked;
+
+	const spec = document.getElementById('special').checked;
+
+	const charCount = lc + uc + num + spec;
+
 	if (length < 8 || length > 128) {
 		alert(
 			'Password length must be between 8 and 128 characters - please try again'
 		);
 		throw err;
 	}
-	const lc = confirm(
-		'Include lowercase characters? select ok for yes or cancel for no'
-	);
-	const uc = confirm(
-		'Include uppercase characters? select ok for yes or cancel for no'
-	);
-	const num = confirm(
-		'Include numeric characters? select ok for yes or cancel for no'
-	);
-	const spec = confirm(
-		'Include special characters? select ok for yes or cancel for no'
-	);
-	const charCount = lc + uc + num + spec;
-	// console.log(charCount)
+
 	if (charCount === 0) {
 		alert('At least 1 character type must be selected - please try again');
 		throw err;
@@ -58,8 +53,6 @@ function generatePassword() {
 		const password = pWord.join('');
 
 		newPass.innerHTML = password;
-		// alert('Your secure password is: ' + password);
-		// newPass.innerHTML(password);
 	}
 
 	writePassword();
