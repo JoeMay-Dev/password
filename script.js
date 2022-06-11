@@ -10,13 +10,9 @@ function generatePassword() {
 	const err = 'User input error';
 	const length = document.getElementById('length').value;
 	const lc = document.getElementById('lower').checked;
-
 	const uc = document.getElementById('upper').checked;
-
 	const num = document.getElementById('number').checked;
-
 	const spec = document.getElementById('special').checked;
-
 	const charCount = lc + uc + num + spec;
 
 	if (length < 8 || length > 128) {
@@ -50,7 +46,13 @@ function generatePassword() {
 		}
 	}
 	function writePassword() {
-		const password = pWord.join('');
+		const password = pWord
+			.join('')
+			.split('')
+			.sort(function () {
+				return 0.5 - Math.random();
+			})
+			.join('');
 
 		newPass.innerHTML = password;
 	}
